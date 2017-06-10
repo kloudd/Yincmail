@@ -1,0 +1,28 @@
+
+{% extends "yinc/indexOrignal.html" %}
+
+{% block contactUs %}
+{% load staticfiles%}
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+        <br><br><hr><br>
+            <div class="col-lg-12">
+                 
+                <div id="map" style="width:1000px;height:600px;background:yellow"></div>
+
+<script>
+function myMap() {
+var mapOptions = {
+    center: new google.maps.LatLng(12.973151, 77.694834),
+    zoom: 16,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+}
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+</script>
+            </div>
+        </div>     
+    </div>
+</div>
+{% endblock %}
