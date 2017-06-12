@@ -3,41 +3,15 @@
 
 {% block shoes %}
 {% load staticfiles%}
-<div id="page-wrapper">
+<div id="page-wrapper" ng-app="yincApp">
+  <script src="{% static 'yinc/angular/app/app.module.js' %}"></script>
+  <script src="{% static 'yinc/angular/app/shoe-list/shoe-list.module.js' %}"></script>
+  <script src="{% static 'yinc/angular/app/shoe-list/shoe-list.component.js' %}"></script>
     <div class="container-fluid">
         <div class="row">
         <br><br><hr><br>
-            <div class="col-lg-12">
-               		{% if orderby %}
-                    {% for product in orderby %}
-                    {% if product.category == "shoe" %}
-               		<div class="col-lg-4">
-               			<img src="{% static product.imageUrl %}"  height="50px" width="50px">
-               			<br>
-               			Name:{{product.name}}
-               			<br>
-               			Price{{product.price}}
-               			<br>
-               			Weight{{product.weight}}
-               			Weight{{product.category}}
-               			<br>
-               			<form name="myform" id="myform" method="POST" action="/yinc/controller/addToCart/">
-               			{% csrf_token %}
-               			<input type="hidden" name="productId" value="{{product.productId}}">
-               			<button class="btn btn-success" type="submit">Add to Cart</button>
-               			</form>
-               			<form name="myform" id="myform" method="POST" action="/yinc/controller/addToWishList/">
-               			{% csrf_token %}
-               			<input type="hidden" name="productId" value="{{product.productId}}">
-               			<button class="btn btn-success" type="submit">Add to Wishlist</button>
-               			</form>
-               		</div>
-               		{% endif %}
-               		{% endfor %}
-                    {% else %}
-					{% endif %}
-               	
-            </div>
+        <shoe-list></shoe-list>
+        
         </div>     
     </div>
 </div>

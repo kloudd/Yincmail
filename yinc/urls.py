@@ -1,5 +1,5 @@
 from django.conf.urls import url
-
+from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 
 urlpatterns = [
@@ -13,4 +13,22 @@ urlpatterns = [
     url(r'^controller/addToCart/$', views.addToCart, name='addToCart'),
     url(r'^controller/addToWishList/$', views.addToWishList, name='addToWishList'),
     url(r'^controller/addUser/$', views.addUser, name='addUser'),
+    
+
+
+    url(r'^api/product/$', views.ProductList.as_view()),
+    url(r'^api/product/(?P<pk>[0-9]+)/$', views.ProductDetail.as_view()),
+
+    url(r'^api/user/$', views.UserList.as_view()),
+    url(r'^api/user/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
+
+    url(r'^api/cart/$', views.CartList.as_view()),
+    url(r'^api/cart/(?P<pk>[0-9]+)/$', views.CartDetail.as_view()),
+
+    url(r'^api/wishList/$', views.WishListList.as_view()),
+    url(r'^api/wishList/(?P<pk>[0-9]+)/$', views.WishListDetail.as_view()),
+
+
+
 ]
+urlpatterns = format_suffix_patterns(urlpatterns)

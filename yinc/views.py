@@ -3,6 +3,53 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import UserForm, User, Product, Cart, WishListForm, WishList, CartForm
+from rest_framework import generics
+from yinc.serializers import ProductSerializer, UserSerializer, CartSerializer, WishListSerializer
+
+
+class ProductList(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
+class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class UserList(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class CartList(generics.ListCreateAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+
+
+class CartDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+
+class WishListList(generics.ListCreateAPIView):
+    queryset = WishList.objects.all()
+    serializer_class = WishListSerializer
+
+
+class WishListDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = WishList.objects.all()
+    serializer_class = WishListSerializer
+
+
+
+
+
+
+
+
 
 # Create your views here.
 def home(request):
